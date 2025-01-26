@@ -14,11 +14,14 @@
             height: 150px;
             font-size: 16px;
             padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
             box-sizing: border-box;
         }
         #wordCount {
             margin-top: 10px;
             font-size: 18px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -28,18 +31,18 @@
     <h3 id="wordCount">Word Count: 0</h3>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const textarea = document.getElementById('evaluatedText');
-            const wordCountDisplay = document.getElementById('wordCount');
+        const textarea = document.getElementById('evaluatedText');
+        const wordCountDisplay = document.getElementById('wordCount');
 
-            textarea.addEventListener('input', () => {
-                const text = textarea.value.trim();
-                const wordCount = text ? text.split(/\s+/).filter(Boolean).length : 0;
-                wordCountDisplay.textContent = `Word Count: ${wordCount}`;
-            });
+        textarea.addEventListener('input', () => {
+            // Trim leading/trailing spaces and split by one or more spaces
+            const text = textarea.value.trim();
+            const words = text.length > 0 ? text.split(/\s+/) : [];
+            wordCountDisplay.textContent = `Word Count: ${words.length}`;
         });
     </script>
 </body>
 </html>
+
 
 
